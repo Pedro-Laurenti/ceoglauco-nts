@@ -51,7 +51,9 @@ function MyApp({Component, pageProps}) {
                 <meta name="image" itemProp="image" content="https://www.ceoglauco.com/logo.webp" />
                 <meta name="image" itemProp="image" content="http://ceoglauco.com/logo.webp" />
 
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/public/Logo.ico" />
+                <link rel='favicon' href="/public/Logo.ico" />
+                <link rel="shortcut icon" href="/public/Logo.ico" />
             </Head>
             <Component {...pageProps}/>
         </>
