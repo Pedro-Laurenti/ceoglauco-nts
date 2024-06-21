@@ -55,7 +55,7 @@ function MyApp({Component, pageProps}) {
                 <link rel='favicon' href="/public/Logo.ico" />
                 <link rel="shortcut icon" href="/public/Logo.ico" />
             </Head>
-            <Component {...pageProps}/>
+            <Component {...pageProps} />
         </>
     )
 }
