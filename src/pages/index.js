@@ -37,24 +37,18 @@ const Início = () => {
                             <span className='text-3xl font-light text-white'>Mentoria:</span> Da origem ao novo eu
                         </h2>
                         <div className='w-full md:w-3/4 text-xl text-left flex flex-col gap-6 mb-20'>
-                        
                             <p className=''>Estamos muito felizes em receber todos vocês! Nossa jornada de transformação e autoconhecimento começa agora e promete mudar a sua vida em 8 encontros semanais.</p>
                             <p className='font-bold'>Detalhes:</p>
                             <ul className='list-disc flex flex-col gap-2'>
-                                <li><b className='text-sky-500'>Data e Hora:</b> 17/06/2024 às 13h00</li>
+                                <li><b className='text-sky-500'>Data e Hora:</b> todas as segundas-feiras às 13h00</li>
                                 <li><b className='text-sky-500'>Local Presencial:</b> Rua Manoel da Abadia, nº 116, Centro, Anápolis, GO</li>
-                                <li><b className='text-sky-500'>Transmissão ao Vivo:</b> Disponibilizada no YouTube e no site.</li>
+                                <li><b className='text-sky-500'>Transmissão ao Vivo:</b> Disponibilizada no YouTube, Instagram e no site.</li>
                             </ul>
-                            
                         </div>
 
                         <Link href="https://www.youtube.com/@glaucoalvescosta/streams" className="bg-sky-500 hover:bg-sky-500/50 px-10 py-3 my-10 flex flex-row justify-between rounded-xl gap-5 items-center"><div>Ativar notificação</div> <FaBell /></Link>
 
-                        
-
-
                     </section>
-
 
                     <Coutdown />
 

@@ -1,5 +1,5 @@
 "use client"
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { BsArrowBarLeft, BsArrowBarRight, BsDownload } from 'react-icons/bs';
 import {
     Chart as ChartJS,
@@ -28,6 +28,25 @@ const MultiStepForm = () => {
         phone: '',
         answers: {} 
     })
+
+    useEffect(() => {
+        const savedFormData = localStorage.getItem('formData');
+        const savedPage = localStorage.getItem('page');
+        
+        if (savedFormData) {
+            setFormData(JSON.parse(savedFormData));
+        }
+        
+        if (savedPage) {
+            setPage(JSON.parse(savedPage));
+        }
+    }, []);
+
+    // Salvar dados no localStorage sempre que formData ou page mudarem
+    useEffect(() => {
+        localStorage.setItem('formData', JSON.stringify(formData));
+        localStorage.setItem('page', JSON.stringify(page));
+    }, [formData, page]);
 
     const chartRef = useRef(null);
 
@@ -232,11 +251,16 @@ const MultiStepForm = () => {
         }
     }
 
+    const [loading, setLoading] = useState(false);
+
     const handleNexteenv = async () => {
         if (page === 1 && (!formData.firstName || !formData.lastName || !formData.email || !formData.phone)) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
+
+        setLoading(true);
+
         try {
             const response = await fetch('/api/submit', {
                 method: 'POST',
@@ -250,11 +274,14 @@ const MultiStepForm = () => {
             console.log('Resposta do Servidor:', data);
         } catch (error) {
             console.error('Erro ao enviar dados:', error);
+        } finally {
+            setLoading(false);
         }
+
         setPage(page + 1);
     };
 
-    const handleNext = async () => {
+    const handleNext = () => {
         if (page === 1 && (!formData.firstName || !formData.lastName || !formData.email || !formData.phone)) {
             alert('Por favor, preencha todos os campos.');
             return;
@@ -386,7 +413,6 @@ const MultiStepForm = () => {
             default:
                 return;
         }
-
         window.open(shareUrl, '_blank');
     };
 
@@ -445,10 +471,24 @@ const MultiStepForm = () => {
                                     onChange={handleChange}
                                     className="border border-gray-300 p-2 rounded-md w-full mt-4 bg-slate-950/20"/>
                             </label>
+
                             <button
                                 onClick={handleNexteenv}
-                                className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-sky-500 mt-5">Próximo
-                                <BsArrowBarRight/></button>
+                                className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-sky-500 mt-5"
+                                disabled={loading}>
+                                    {loading ? (
+                                        <span className='w-full h-full cursor-wait flex gap-4 items-center'>
+                                            Carregando...
+                                            <div className="animate-spin border border-white aspect-square w-5 h-5 rounded" role="status" aria-hidden="true"></div>
+                                        </span>
+                                    ) : (
+                                        <span className='w-full flex gap-4 items-center'>
+                                            Próximo
+                                            <BsArrowBarRight />
+                                        </span>
+                                    )}
+                            </button>
+
                         </div>
                         <div className="w-full md:w-1/2 flex flex-row gap-10">
                             <div className='flex flex-col gap-10'>
