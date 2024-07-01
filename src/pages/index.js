@@ -1,4 +1,4 @@
-import { Navbar, Banner, MultiStepForm, Coutdown } from '../components'
+import { Navbar, Banner, MultiStepForm, Coutdown, YoutubePlaylist } from '../components'
 import { BiArrowToRight } from 'react-icons/bi'
 import Link from 'next/link'
 import { Link as ScrollLink } from 'react-scroll'
@@ -37,7 +37,7 @@ const Início = () => {
                             <span className='text-3xl font-light text-white'>Mentoria:</span> Da origem ao novo eu
                         </h2>
                         <div className='w-full md:w-3/4 text-xl text-left flex flex-col gap-6 mb-20'>
-                            <p className=''>Estamos muito felizes em receber todos vocês! Nossa jornada de transformação e autoconhecimento começa agora e promete mudar a sua vida em 8 encontros semanais.</p>
+                            <p className=''>Estamos muito felizes em receber todos vocês! Nossa jornada de transformação e autoconhecimento começa agora e promete mudar a sua vida em 8 encontros todas as segundas.</p>
                             <p className='font-bold'>Detalhes:</p>
                             <ul className='list-disc flex flex-col gap-2'>
                                 <li><b className='text-sky-500'>Data e Hora:</b> todas as segundas-feiras às 13h00</li>
@@ -46,13 +46,13 @@ const Início = () => {
                             </ul>
                         </div>
 
-                        <Link href="https://www.youtube.com/@glaucoalvescosta/streams" className="bg-sky-500 hover:bg-sky-500/50 px-10 py-3 my-10 flex flex-row justify-between rounded-xl gap-5 items-center"><div>Ativar notificação</div> <FaBell /></Link>
+                        
 
                     </section>
 
-                    <Coutdown />
 
-                    <p className='w-full text-center font-bold my-10'>Primeira conferência</p>
+                    <YoutubePlaylist />
+
 
                     <section className='w-full flex flex-col items-center'>
                         <div className='w-full md:w-3/4 text-xl text-left flex flex-col gap-6 my-20'>
